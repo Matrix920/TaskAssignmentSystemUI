@@ -16,6 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatPaginatorModule,
   ]
 })
 export class TasksModule { }

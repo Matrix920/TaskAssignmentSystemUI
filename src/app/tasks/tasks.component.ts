@@ -6,6 +6,8 @@ import { TaskService } from '../services/task/task.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
+import { PageEvent } from '@angular/material/paginator';
+import { PageResultRequst } from '../services/shared/PagedResultRequest.model';
 
 @Component({
   selector: 'app-tasks',
@@ -13,6 +15,25 @@ import { AssignTaskComponent } from './assign-task/assign-task.component';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
+  totalCount = 0;
+  pageSizeOptions = [5, 10, 25];
+
+  requestParams = {
+    PageSize : 10,
+    PageIndex: 0,
+    Filter: '',
+    Sort: 'name',
+    Dir: 'asc'
+  } as PageResultRequst;
+
+
+  hidePageSize = false;
+  showPageSizeOptions = true;
+  showFirstLastButtons = true;
+  disabled = false;
+
+  pageEvent = {} as PageEvent;
+
   dataSource = [] as TaskDto[];
 
   loading = true;
@@ -26,13 +47,10 @@ export class TasksComponent implements OnInit {
   }
 
   loadTasks() {
-    this.taskService.getTasks().subscribe(tasks => {
-      this.dataSource = tasks;
-      this.loading = false;
-    },
-    err => {
-      this.loading = false;
-    })
+    this.taskService.getTasks(this.requestParams).subscribe({
+      next: (result) => {this.dataSource = result.items; this.totalCount = result.totalCount},
+      error: (err) => this.loading = false
+    });
   }
 
   displayedColumns: string[] = ['No', 'Name', 'Description', 'Assignee', 'Actions'];
@@ -56,5 +74,14 @@ export class TasksComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.loadTasks();
     })
+  }
+
+  handlePageEvent(e: PageEvent) {
+    this.pageEvent = e;
+    this.totalCount = e.length;
+    this.requestParams.PageIndex = e.pageIndex;
+    this.requestParams.PageSize = e.pageSize;
+
+    this.loadTasks();
   }
 }
