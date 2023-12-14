@@ -8,6 +8,7 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { PageEvent } from '@angular/material/paginator';
 import { PageResultRequst } from '../services/shared/PagedResultRequest.model';
+import { Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-tasks',
@@ -48,7 +49,11 @@ export class TasksComponent implements OnInit {
 
   loadTasks() {
     this.taskService.getTasks(this.requestParams).subscribe({
-      next: (result) => {this.dataSource = result.items; this.totalCount = result.totalCount},
+      next: (result) => {
+        this.dataSource = result.items; 
+        this.totalCount = result.totalCount;
+        this.loading = false;
+      },
       error: (err) => this.loading = false
     });
   }
@@ -74,6 +79,20 @@ export class TasksComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.loadTasks();
     })
+  }
+
+  sortData(sort: Sort) {
+    if(! sort.active || sort.direction === '') return;
+
+    this.requestParams.Sort = sort.active;
+    this.requestParams.Dir = sort.direction;
+
+    this.loadTasks();
+  }
+
+  clearSearch() {
+    this.requestParams.Filter = '';
+    this.loadTasks();
   }
 
   handlePageEvent(e: PageEvent) {

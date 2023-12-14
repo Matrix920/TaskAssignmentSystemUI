@@ -17,6 +17,8 @@ import { AssignTaskComponent } from './assign-task/assign-task.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatProgressBarModule,
     MatSnackBarModule,
     MatPaginatorModule,
+    MatSortModule,
+    MatExpansionModule
   ]
 })
 export class TasksModule { }

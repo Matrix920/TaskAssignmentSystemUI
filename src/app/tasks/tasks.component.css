@@ -1,0 +1,7 @@
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: end;
+  }
+
+  .full-width {
+    width: 100%;
+  }
