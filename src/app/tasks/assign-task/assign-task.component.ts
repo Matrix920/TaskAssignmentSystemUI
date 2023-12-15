@@ -2,10 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { EmployeeDto } from 'src/app/services/employee/employee.model';
-import { EmployeeService } from 'src/app/services/employee/employee.service';
-import { TaskDto } from 'src/app/services/task/task.model';
-import { TaskService } from 'src/app/services/task/task.service';
+import { EmployeeDto } from 'src/app/models/employees/employee.model';
+import { EmployeeService } from 'src/app/services/employees/employee.service';
+import { TaskDto } from 'src/app/models/tasks/task.model';
+import { TaskService } from 'src/app/services/tasks/task.service';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 @Component({

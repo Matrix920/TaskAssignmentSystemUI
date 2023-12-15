@@ -1,13 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { EmployeeDto} from '../../services/employee/employee.model';
-import { EmployeeService } from 'src/app/services/employee/employee.service';
+import { EmployeeDto} from '../../models/employees/employee.model';
+import { EmployeeService } from 'src/app/services/employees/employee.service';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Observable } from 'rxjs';
 import {  MatDialogRef } from '@angular/material/dialog';
-import { TaskService } from 'src/app/services/task/task.service';
+import { TaskService } from 'src/app/services/tasks/task.service';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { CreateTaskDto } from 'src/app/services/task/createTask.model';
-import { TaskDto } from 'src/app/services/task/task.model';
+import { CreateTaskDto } from 'src/app/models/tasks/createTask.model';
+import { TaskDto } from 'src/app/models/tasks/task.model';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({

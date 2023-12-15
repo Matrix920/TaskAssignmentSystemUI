@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs'
-import { TaskDto } from '../services/task/task.model';
+import { TaskDto } from '../models/tasks/task.model';
 import { OnInit } from '@angular/core'
-import { TaskService } from '../services/task/task.service';
+import { TaskService } from '../services/tasks/task.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { PageEvent } from '@angular/material/paginator';
-import { PageResultRequst } from '../services/shared/PagedResultRequest.model';
+import { PageResultRequst } from '../models/shared/PagedResultRequest.model';
 import { Sort } from '@angular/material/sort';
 
 @Component({
